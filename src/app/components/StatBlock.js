@@ -30,7 +30,7 @@ function StatBlockCol({ text }) {
           "mb-1": item.plain_text !== "| ",
           "font-bold": item.annotations.bold,
           "text-red font-semibold": item.annotations.code,
-          "text-transparent border-b-2 mt-[-1.5em] mb-1": item.plain_text === "| ",
+          "text-transparent border-b border-lightGray mt-[-1.5em] mb-1": item.plain_text === "| ",
           hidden: item.annotations.color === "gray",
         });
 

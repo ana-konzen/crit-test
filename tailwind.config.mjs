@@ -15,6 +15,7 @@ module.exports = {
         black: "var(--black)",
         white: "var(--white)",
         gray: "var(--gray)",
+        lightGray: "var(--light-gray)",
       },
       fontFamily: {
         serif: ["var(--font-serif)"],
