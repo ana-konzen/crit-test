@@ -14,7 +14,7 @@ export default function CritInfo({ blockId }) {
   }, [blockId]);
 
   return (
-    <div className="border-l-2 border-gray py-1 px-4 mt-4">
+    <div className="border-l-2 right-0 translate-x-[100%] top-10 absolute border-gray py-1 px-4 mt-4">
       {block.map((item, index) => {
         return <InfoLine key={index} text={item.paragraph.rich_text} />;
       })}

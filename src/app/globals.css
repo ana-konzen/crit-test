@@ -12,7 +12,7 @@
   --background: var(--cream);
   --foreground: var(--black);
   --menu-width: 250px;
-  --block-width: 700px;
+  --block-width: 600px;
 }
 
 @media (prefers-color-scheme: dark) {
