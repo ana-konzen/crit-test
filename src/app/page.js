@@ -33,20 +33,20 @@ export default function MainPage() {
       <div className="flex flex-col mt-4">
         {page.map((block, index) => {
           if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Crit Info") {
-            return <CritInfo key={index} blockId={block.id} />;
+            return <CritInfo key={block.id} blockId={block.id} />;
           }
 
           if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Statblock") {
-            return <StatBlock key={index} blockId={block.id} />;
+            return <StatBlock key={block.id} blockId={block.id} />;
           }
 
           if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Schedule") {
-            return <Schedule key={index} blockId={block.id} />;
+            return <Schedule key={block.id} blockId={block.id} />;
           }
 
           const Component = componentDict[block.type];
           if (Component) {
-            return <Component key={index} text={block[block.type].rich_text} />;
+            return <Component key={block.id} text={block[block.type].rich_text} />;
           }
         })}
       </div>
