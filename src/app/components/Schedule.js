@@ -38,7 +38,7 @@ function ScheduleRow({ text }) {
   console.log(text);
 
   return (
-    <div className="border-l-2 px-2 py-1">
+    <div className="border-l-2 border-gray px-2 py-1">
       {text.map((item, index) => {
         const itemClass = classNames({
           "font-bold": item.annotations.bold,
