@@ -1,6 +1,6 @@
-export default function Header({ text }) {
+export default function PageTitle({ text }) {
   return (
-    <div className="font-serif text-xl text-right relative w-28 -left-32 translate-y-[100%] mt-4 italic">
+    <div className="font-serif text-3xl text-right absolute w-36 -left-36 italic">
       {text.map((item) => {
         if (item.annotations.color === "gray") {
           return "";

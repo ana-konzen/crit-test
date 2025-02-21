@@ -8,9 +8,11 @@ import SubHeader from "@/app/components/SubHeader";
 import StatBlock from "@/app/components/StatBlock";
 import Schedule from "@/app/components/Schedule";
 import CritInfo from "@/app/components/CritInfo";
+import PageTitle from "@/app/components/PageTitle";
 
 const componentDict = {
   paragraph: Paragraph,
+  heading_1: PageTitle,
   heading_2: Header,
   heading_3: SubHeader,
 };
@@ -28,7 +30,6 @@ export default function MainPage() {
 
   return (
     <>
-      <h1 className="text-3xl italic">Cranbrook Studio Crit</h1>
       <div className="flex flex-col mt-4">
         {page.map((block, index) => {
           if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Crit Info") {

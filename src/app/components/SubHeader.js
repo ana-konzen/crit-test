@@ -1,6 +1,6 @@
 export default function SubHeader({ text }) {
   return (
-    <h4 className="font-sans font-bold text-lg my-2">
+    <h4 className="font-sans font-bold text-lg mb-2">
       {text.map((item) => {
         if (item.annotations.color === "gray") {
           return "";

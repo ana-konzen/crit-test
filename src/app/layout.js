@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${baskerville.variable} ${nunito.variable} antialiased`}>
         <NavBar />
-        <div className="p-10 absolute w-block left-[30vw] font-serif">{children}</div>
+        <div className="p-10 absolute w-block left-[35vw] font-serif">{children}</div>
       </body>
     </html>
   );
