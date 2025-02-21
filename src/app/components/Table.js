@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchBlockChildren } from "@/notion/notion";
-import Paragraph from "@/app/components/Paragraph";
+import RichText from "@/app/components/RichText";
 
 export default function Table({ data, id }) {
   const [rows, setRows] = useState([]);
@@ -22,7 +22,7 @@ export default function Table({ data, id }) {
   }
 
   return (
-    <div className="border-2 border-gray px-2 py-1">
+    <div className="border-2 font-sans border-gray px-2 py-1">
       <table className="table-auto w-full">
         {headerRow && (
           <thead className="border-b-2 border-gray">
@@ -50,11 +50,9 @@ function Row({ row }) {
 }
 
 function Cell({ cell }) {
-  //   return <td>{cell[0]?.text.content}</td>;
-
   return (
     <td>
-      <Paragraph text={cell} />
+      <RichText richText={cell} />
     </td>
   );
 }
