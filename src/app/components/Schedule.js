@@ -17,25 +17,19 @@ export default function Schedule({ blockId }) {
     fetchTable();
   }, [blockId]);
 
+  const cells = block.map((row) => row.table_row.cells).flat();
+
   return (
     <div className="my-4 grid grid-cols-3 gap-x-2 gap-y-0 font-sans">
-      {block.map((row, rowIndex) => {
-        return (
-          <>
-            {/* <div key={rowIndex} className="flex justify-between flex-row"> */}
-            {row.table_row.cells.map((cell, cellIndex) => {
-              return <ScheduleRow key={cellIndex} text={cell} />;
-            })}
-            {/* </div> */}
-          </>
-        );
-      })}
+      {cells.map((cell, index) => (
+        <ScheduleRow key={index} text={cell} />
+      ))}
     </div>
   );
 }
 
 function ScheduleRow({ text }) {
-  console.log(text);
+  console.log("ScheduleRow text", text);
 
   return (
     <div className="border-l-2 border-gray px-2 py-1">

@@ -16,6 +16,9 @@ export async function fetchDatabase({ database_id, filter }) {
 }
 
 export async function fetchBlockChildren({ block_id }) {
-  const response = await notion.blocks.children.list({ block_id, page_size: 50 });
+  const response = await notion.blocks.children.list({
+    block_id,
+    page_size: 50,
+  });
   return response.results;
 }
