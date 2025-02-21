@@ -25,7 +25,7 @@ export default function NavBar() {
     fetchPages();
   }, []);
   return (
-    <div className="bg-red z-10 font-serif m-[5vh] text-cream h-[90vh] fixed p-8 w-menu rounded-xl">
+    <div className="bg-red z-10 font-serif m-[5vh] text-cream h-[90vh] fixed p-8 w-menu rounded-[25px]">
       <h1 className="text-xl mb-10">
         Designing
         <br />
