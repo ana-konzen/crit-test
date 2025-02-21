@@ -1,22 +1,19 @@
-export default function Paragraph({ text }) {
-  const styleDict = {
-    bold: "font-bold",
-    italic: "italic",
-    underline: "underline",
-  };
+import classNames from "classnames";
 
+export default function Paragraph({ text }) {
   if (text.length > 0) {
     return (
       <p className="font-serif text-sm mb-4">
-        {text.map((text, index) => {
+        {text.map((item, index) => {
+          const itemClass = classNames({
+            "font-bold": item.annotations.bold,
+            italic: item.annotations.italic,
+            underline: item.annotations.underline,
+            hidden: item.annotations.color === "gray",
+          });
           return (
-            <span
-              key={index}
-              className={`${text.annotations.bold ? styleDict.bold : ""} ${
-                text.annotations.italic ? styleDict.italic : ""
-              }  ${text.annotations.color === "gray" ? "hidden" : ""}`}
-            >
-              {text.plain_text}
+            <span key={index} className={itemClass}>
+              {item.plain_text}
             </span>
           );
         })}
