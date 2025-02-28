@@ -9,8 +9,10 @@ export default function RichText({ richText }) {
           "font-semibold text-red mr-2": item.annotations.code,
           italic: item.annotations.italic,
           underline: item.annotations.underline || item.href,
-          hidden: item.annotations.color === "gray",
         });
+        if (item.annotations.color === "gray") {
+          return null;
+        }
         if (item.href) {
           return (
             <a key={index} href={item.href} className={itemClass} target="_blank">

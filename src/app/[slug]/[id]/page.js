@@ -20,8 +20,9 @@ const componentDict = {
   quote: Quote,
 };
 
-export default async function Page() {
-  const pageContent = await getPageContent("1a15ae7ea4ba804385b8d1048e3bc3d4");
+export default async function Page({ params }) {
+  const pageParams = await params;
+  const pageContent = await getPageContent(pageParams.id);
 
   return (
     <div className="flex flex-col mt-4">

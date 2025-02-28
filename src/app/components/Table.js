@@ -1,7 +1,6 @@
 import RichText from "@/app/components/RichText";
 
 export default function Table({ content: table, blockChildren }) {
-  console.log(blockChildren);
   const rows = blockChildren;
 
   let headerRow;

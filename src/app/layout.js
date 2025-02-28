@@ -1,5 +1,5 @@
 import { Libre_Baskerville, Nunito } from "next/font/google";
-import NavBar from "@/app/components/NavBar";
+import NavBar from "@/app/components/nav/NavBar";
 import "./globals.css";
 
 const baskerville = Libre_Baskerville({
