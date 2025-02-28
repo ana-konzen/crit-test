@@ -22,6 +22,7 @@ const componentDict = {
 
 export default async function Page() {
   const pageContent = await getPageContent("1a15ae7ea4ba804385b8d1048e3bc3d4");
+  console.log("Page", pageContent);
 
   return (
     <div className="flex flex-col mt-4">
@@ -33,7 +34,7 @@ export default async function Page() {
           return <StatBlock key={block.id} blockChildren={block.children} />;
         }
         const Component = componentDict[block.type];
-        if (Component) {
+        if (Component && block[block.type].color !== "gray") {
           return (
             <Component
               key={block.id}
