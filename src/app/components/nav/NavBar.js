@@ -29,7 +29,7 @@ function Toc({ content }) {
   return (
     <>
       {content.map((block, index) => {
-        if (block.has_children) {
+        if (block.type === "toggle" && block.has_children) {
           return (
             <ToggleBlock
               key={block.id}
