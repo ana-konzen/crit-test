@@ -6,8 +6,6 @@ import Link from "next/link";
 const pages = ["Preface", "The Case", "The Framework", "Case Studies", "Interviews"];
 const romanNumbers = ["I", "II", "III", "IV", "V"];
 
-export const revalidate = 60;
-
 export default async function NavBar() {
   const toc = await getToc();
   return (
