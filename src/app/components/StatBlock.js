@@ -1,21 +1,9 @@
-import { fetchBlockChildren } from "@/notion/notion";
-import { useEffect, useState } from "react";
 import classNames from "classnames";
 
-export default function StatBlock({ blockId }) {
-  const [block, setBlock] = useState([]);
-
-  useEffect(() => {
-    async function fetchBlock() {
-      const response = await fetchBlockChildren({ block_id: blockId });
-      setBlock(response);
-    }
-    fetchBlock();
-  }, [blockId]);
-
+export default function StatBlock({ blockChildren }) {
   return (
     <div className="flex my-4 font-sans flex-row justify-between border-y-2 border-gray py-4">
-      {block.map((block, index) => {
+      {blockChildren.map((block, index) => {
         return <StatBlockCol key={index} text={block[block.type].rich_text} />;
       })}
     </div>
