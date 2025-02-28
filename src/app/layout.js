@@ -19,6 +19,8 @@ export const metadata = {
   description: "A guide to running effective design critiques",
 };
 
+export const revalidate = 60;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

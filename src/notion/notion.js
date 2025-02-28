@@ -4,8 +4,6 @@ import { cache } from "react";
 
 import { Client } from "@notionhq/client";
 
-export const revalidate = 60;
-
 const notion = new Client({
   auth: process.env.NOTION_KEY,
 });
