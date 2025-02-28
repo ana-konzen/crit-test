@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function ToggleBlock({ title, slug, blockChildren, parent = true }) {
-  if (!parent) console.log("child", blockChildren);
   const [visible, setVisible] = useState(false);
 
   const itemClass = classNames({
