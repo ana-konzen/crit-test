@@ -50,7 +50,7 @@ export const getToc = async () => {
   });
   await Promise.all(
     blocks.map(async (block) => {
-      if (block.has_children) {
+      if (block.type === "toggle" && block.has_children) {
         const blockChildren = await fetchBlockChildren({
           block_id: block.id,
         });
@@ -62,14 +62,6 @@ export const getToc = async () => {
                 page_id: child.link_to_page.page_id,
               });
               child.slug = createSlug(child.title);
-            }
-
-            if (child.type === "toggle" && child.has_children) {
-              const childBlockChildren = await fetchBlockChildren({
-                block_id: child.id,
-              });
-              child.children = childBlockChildren;
-              child.title = child.toggle.rich_text[0].plain_text;
             }
           })
         );
