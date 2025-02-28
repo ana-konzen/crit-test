@@ -1,4 +1,4 @@
-import RichText from "@/app/components/RichText";
+import RichText from "@/app/layout/components/RichText";
 
 export default function Table({ content: table, blockChildren }) {
   const rows = blockChildren;

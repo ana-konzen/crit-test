@@ -1,5 +1,5 @@
 import { fetchBlockChildren, fetchPageTitle } from "@/notion/notion";
-import ToggleBlock from "@/app/components/nav/ToggleBlock";
+import ToggleBlock from "@/app/layout/nav/ToggleBlock";
 import { cache } from "react";
 import Link from "next/link";
 
