@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import RichText from "@/app/components/RichText";
 
 export default function CritInfo({ blockChildren }) {
   return (
@@ -13,20 +13,7 @@ export default function CritInfo({ blockChildren }) {
 function InfoLine({ text }) {
   return (
     <div className="font-sans mb-1 text-sm">
-      {text.map((item, index) => {
-        const itemClass = classNames({
-          "mr-0": true,
-          "font-bold": item.annotations.bold,
-          "font-semibold": item.annotations.code,
-          hidden: item.annotations.color === "gray",
-        });
-
-        return (
-          <span key={index} className={itemClass}>
-            {item.plain_text}
-          </span>
-        );
-      })}
+      <RichText richText={text} />
     </div>
   );
 }

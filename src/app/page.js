@@ -34,7 +34,7 @@ export default async function Page() {
           return <StatBlock key={block.id} blockChildren={block.children} />;
         }
         const Component = componentDict[block.type];
-        if (Component && block[block.type].color !== "gray") {
+        if (Component && block[block.type].color !== "gray" && block[block.type].rich_text.length > 0) {
           return (
             <Component
               key={block.id}

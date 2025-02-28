@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import RichText from "@/app/components/RichText";
 
 export default function StatBlock({ blockChildren }) {
   return (
@@ -13,21 +13,14 @@ export default function StatBlock({ blockChildren }) {
 function StatBlockCol({ text }) {
   return (
     <div className="flex flex-col">
-      {text.map((item, index) => {
-        const itemClass = classNames({
+      <RichText
+        richText={text}
+        modifyStyles={(item) => ({
           "mb-1": item.plain_text !== "| ",
-          "font-bold": item.annotations.bold,
-          "text-red font-semibold": item.annotations.code,
+          "mx-0": item.annotations.code,
           "text-transparent border-b border-lightGray mt-[-1.5em] mb-1": item.plain_text === "| ",
-          hidden: item.annotations.color === "gray",
-        });
-
-        return (
-          <span className={itemClass} key={index}>
-            {item.plain_text}
-          </span>
-        );
-      })}
+        })}
+      />
     </div>
   );
 }

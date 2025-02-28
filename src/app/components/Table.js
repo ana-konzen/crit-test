@@ -40,7 +40,7 @@ function Row({ row }) {
 
 function Cell({ cell }) {
   return (
-    <td className="border-x  border-gray py-2 px-4">
+    <td className="border-x border-gray py-2 px-4">
       <RichText richText={cell} />
     </td>
   );

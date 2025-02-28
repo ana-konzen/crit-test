@@ -3,7 +3,7 @@ export default function SubHeader({ text }) {
     <h4 className="font-sans font-bold text-lg mb-2">
       {text.map((item) => {
         if (item.annotations.color === "gray") {
-          return "";
+          return null;
         }
         return item.plain_text;
       })}
