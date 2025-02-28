@@ -1,31 +1,21 @@
-import { useEffect, useState } from "react";
-import { fetchBlockChildren } from "@/notion/notion";
 import RichText from "@/app/components/RichText";
 
-export default function Table({ data, id }) {
-  const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    async function fetchTable() {
-      const fetchedRows = await fetchBlockChildren({ block_id: id });
-      console.log("fetchedRows", fetchedRows);
-      setRows(fetchedRows);
-    }
-    fetchTable();
-  }, [id]);
+export default function Table({ content: table, blockChildren }) {
+  console.log(blockChildren);
+  const rows = blockChildren;
 
   let headerRow;
   let bodyRows = rows;
-  if (data.has_column_header) {
+  if (table.has_column_header) {
     headerRow = rows[0];
     bodyRows = rows.slice(1);
   }
 
   return (
-    <div className="border-2 font-sans border-gray px-2 py-1">
+    <div className="font-sans">
       <table className="table-auto w-full">
         {headerRow && (
-          <thead className="border-b-2 border-gray">
+          <thead className="border-b font-bold border-gray">
             <Row row={headerRow} />
           </thead>
         )}
@@ -41,7 +31,7 @@ export default function Table({ data, id }) {
 
 function Row({ row }) {
   return (
-    <tr>
+    <tr className="border-x-2 border-background">
       {row.table_row.cells.map((cell, index) => (
         <Cell key={index} cell={cell} />
       ))}
@@ -51,7 +41,7 @@ function Row({ row }) {
 
 function Cell({ cell }) {
   return (
-    <td>
+    <td className="border-x  border-gray py-2 px-4">
       <RichText richText={cell} />
     </td>
   );
