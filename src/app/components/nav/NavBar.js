@@ -3,7 +3,6 @@ import ToggleBlock from "@/app/components/nav/ToggleBlock";
 import { cache } from "react";
 import Link from "next/link";
 
-const pages = ["Preface", "The Case", "The Framework", "Case Studies", "Interviews"];
 const romanNumbers = ["I", "II", "III", "IV", "V"];
 
 export default async function NavBar() {
@@ -45,9 +44,9 @@ function Toc({ content }) {
   );
 }
 
-export const getToc = cache(async () => {
+export const getToc = async () => {
   const blocks = await fetchBlockChildren({
-    block_id: "1a75ae7ea4ba8030a2dcc88dafa1b27a",
+    block_id: "1a75ae7ea4ba8030a2dcc88dafa1b27a", //toc page on notion
   });
   await Promise.all(
     blocks.map(async (block) => {
@@ -58,8 +57,10 @@ export const getToc = cache(async () => {
         await Promise.all(
           blockChildren.map(async (child) => {
             if (child.type === "link_to_page") {
-              child.title = await fetchPageTitle({ page_id: child.link_to_page.page_id });
               child.page_id = child.link_to_page.page_id;
+              child.title = await fetchPageTitle({
+                page_id: child.link_to_page.page_id,
+              });
               child.slug = createSlug(child.title);
             }
 
@@ -77,7 +78,7 @@ export const getToc = cache(async () => {
     })
   );
   return blocks;
-});
+};
 
 function createSlug(title) {
   return title.toLowerCase().replaceAll(" ", "-");

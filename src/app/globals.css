@@ -16,12 +16,12 @@
   --block-width: 600px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: var(--black);
     --foreground: var(--cream);
   }
-}
+} */
 
 body {
   color: var(--foreground);

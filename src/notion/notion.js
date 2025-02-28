@@ -29,7 +29,7 @@ export async function fetchBlockChildren({ block_id }) {
   return response.results;
 }
 
-export const getPageContent = cache(async (pageId) => {
+export const getPageContent = async (pageId) => {
   const blocks = await fetchBlockChildren({
     block_id: pageId,
   });
@@ -44,4 +44,4 @@ export const getPageContent = cache(async (pageId) => {
     })
   );
   return blocks;
-});
+};

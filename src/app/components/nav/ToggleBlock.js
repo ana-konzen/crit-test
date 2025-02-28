@@ -5,7 +5,12 @@ import Link from "next/link";
 
 import { useState } from "react";
 
-export default function ToggleBlock({ title, slug, blockChildren, parent = true }) {
+export default function ToggleBlock({
+  title,
+  slug,
+  blockChildren,
+  parent = true,
+}) {
   const [visible, setVisible] = useState(false);
 
   const itemClass = classNames({
@@ -28,12 +33,16 @@ export default function ToggleBlock({ title, slug, blockChildren, parent = true 
         onClick={() => setVisible(!visible)}
       >
         {title}
-        {visible ? <ChevronUpIcon className={arrowClass} /> : <ChevronDownIcon className={arrowClass} />}
+        {visible ? (
+          <ChevronUpIcon className={arrowClass} />
+        ) : (
+          <ChevronDownIcon className={arrowClass} />
+        )}
       </div>
       <div className={`${itemClass}`}>
         {blockChildren.map((child) => {
           if (child.type === "link_to_page") {
-            if (!parent) console.log("child", child);
+            // if (!parent) console.log("child", child);
             return (
               <Link
                 href={`/${slug}/${child.page_id}`}

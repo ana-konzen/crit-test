@@ -20,17 +20,29 @@ const componentDict = {
   quote: Quote,
 };
 
+export function generateStaticParams() {
+  return [
+    { slug: "the-framework", id: "1985ae7e-a4ba-8033-9126-c847c294a062" },
+  ]; // Pre-generates these pages at build time
+}
+
 export default async function Page({ params }) {
   const pageParams = await params;
+  console.log("JB Page", pageParams);
   const pageContent = await getPageContent(pageParams.id);
-
   return (
     <div className="flex flex-col mt-4">
       {pageContent.map((block) => {
-        if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Crit Info") {
+        if (
+          block.type === "callout" &&
+          block.callout.rich_text[0].plain_text === "Crit Info"
+        ) {
           return <CritInfo key={block.id} blockChildren={block.children} />;
         }
-        if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Statblock") {
+        if (
+          block.type === "callout" &&
+          block.callout.rich_text[0].plain_text === "Statblock"
+        ) {
           return <StatBlock key={block.id} blockChildren={block.children} />;
         }
         const Component = componentDict[block.type];
