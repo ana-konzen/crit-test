@@ -68,6 +68,7 @@ export async function getToc() {
           })
         );
         block.children = blockChildren;
+        block.slug = createSlug(block.toggle.rich_text[0].plain_text);
       }
     })
   );
