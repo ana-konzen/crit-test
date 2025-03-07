@@ -9,8 +9,8 @@ export default function RichText({ richText, modifyStyles = () => ({}) }) {
         const itemClass = classNames({
           "font-bold": item.annotations.bold,
           "font-semibold text-red mx-1": item.annotations.code,
-          italic: item.annotations.italic,
-          underline: item.annotations.underline || item.href,
+          "italic": item.annotations.italic,
+          "underline": item.annotations.underline || item.href,
           ...styleModifications,
         });
         if (item.annotations.color === "gray") {

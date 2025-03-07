@@ -27,7 +27,7 @@ export default async function Page({ params }) {
   const contentParams = await getContentParams();
   const pageId = contentParams.find((param) => param.slug === pageParams.slug).page_id;
 
-  const pageContent = await getPageContent({ block_id: pageId });
+  const pageContent = await getPageContent(pageId);
 
   return <PageLayout pageContent={pageContent} />;
 }

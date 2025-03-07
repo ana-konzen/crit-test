@@ -19,28 +19,35 @@ const componentDict = {
 };
 
 export default async function PageLayout({ pageContent }) {
-  return (
-    <>
-      {pageContent.map((block) => {
-        if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Crit Info") {
-          return <CritInfo key={block.id} blockChildren={block.children} />;
-        }
-        if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Statblock") {
-          return <StatBlock key={block.id} blockChildren={block.children} />;
-        }
-        const Component = componentDict[block.type];
-        if (Component) {
-          return (
-            <Component
-              key={block.id}
-              text={block[block.type].rich_text}
-              id={block.id}
-              content={block[block.type]}
-              blockChildren={block.children}
-            />
-          );
-        }
-      })}
-    </>
-  );
+  const renderBlock = (block) => {
+    // Handle special "callout" blocks based on their first rich text content.
+    if (block.type === "callout") {
+      const calloutText = block.callout.rich_text[0]?.plain_text;
+      if (calloutText === "Crit Info") {
+        return <CritInfo key={block.id} blockChildren={block.children} />;
+      }
+      if (calloutText === "Statblock") {
+        return <StatBlock key={block.id} blockChildren={block.children} />;
+      }
+    }
+
+    // For other block types, check the component dictionary.
+    const Component = componentDict[block.type];
+    if (Component) {
+      return (
+        <Component
+          key={block.id}
+          text={block[block.type].rich_text}
+          id={block.id}
+          content={block[block.type]}
+          blockChildren={block.children}
+        />
+      );
+    }
+
+    // Return null if no component matches.
+    return null;
+  };
+
+  return <>{pageContent.map(renderBlock)}</>;
 }
