@@ -2,7 +2,7 @@ import { getPageContent, getToc } from "@/notion/notion";
 
 import PageLayout from "@/app/layout/PageLayout";
 
-// Pre-generates these pages at build time
+// Pre-generates these pages at build time: https://nextjs.org/docs/app/api-reference/functions/generate-static-params
 // not sure if this is the best way to do this?
 export async function generateStaticParams() {
   const toc = await getToc();
