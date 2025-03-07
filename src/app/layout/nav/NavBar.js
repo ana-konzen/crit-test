@@ -1,6 +1,5 @@
-import { fetchBlockChildren, fetchPageTitle } from "@/notion/notion";
+import { getToc } from "@/notion/notion";
 import ToggleBlock from "@/app/layout/nav/ToggleBlock";
-import { cache } from "react";
 import Link from "next/link";
 
 const romanNumbers = ["I", "II", "III", "IV", "V"];
@@ -43,34 +42,6 @@ function Toc({ content }) {
     </>
   );
 }
-
-export const getToc = async () => {
-  const blocks = await fetchBlockChildren({
-    block_id: "1a75ae7ea4ba8030a2dcc88dafa1b27a", //toc page on notion
-  });
-  await Promise.all(
-    blocks.map(async (block) => {
-      if (block.type === "toggle" && block.has_children) {
-        const blockChildren = await fetchBlockChildren({
-          block_id: block.id,
-        });
-        await Promise.all(
-          blockChildren.map(async (child) => {
-            if (child.type === "link_to_page") {
-              child.page_id = child.link_to_page.page_id;
-              child.title = await fetchPageTitle({
-                page_id: child.link_to_page.page_id,
-              });
-              child.slug = createSlug(child.title);
-            }
-          })
-        );
-        block.children = blockChildren;
-      }
-    })
-  );
-  return blocks;
-};
 
 function createSlug(title) {
   return title.toLowerCase().replaceAll(" ", "-");

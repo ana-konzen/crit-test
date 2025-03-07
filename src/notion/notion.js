@@ -1,6 +1,5 @@
 // "use server";
 import "dotenv/config";
-import { cache } from "react";
 
 import { Client } from "@notionhq/client";
 
@@ -45,3 +44,31 @@ export const getPageContent = async (pageId) => {
   );
   return blocks;
 };
+
+export async function getToc() {
+  const blocks = await fetchBlockChildren({
+    block_id: "1a75ae7ea4ba8030a2dcc88dafa1b27a", //toc page on notion
+  });
+  await Promise.all(
+    blocks.map(async (block) => {
+      if (block.type === "toggle" && block.has_children) {
+        const blockChildren = await fetchBlockChildren({
+          block_id: block.id,
+        });
+        await Promise.all(
+          blockChildren.map(async (child) => {
+            if (child.type === "link_to_page") {
+              child.page_id = child.link_to_page.page_id;
+              child.title = await fetchPageTitle({
+                page_id: child.link_to_page.page_id,
+              });
+              child.slug = createSlug(child.title);
+            }
+          })
+        );
+        block.children = blockChildren;
+      }
+    })
+  );
+  return blocks;
+}
