@@ -30,7 +30,9 @@ export default function RootLayout({ children }) {
         <NavBar />
         <BurgerMenu />
         <div className="p-4 absolute xl:right-[50px] w-screen right-0 md:w-[var(--content-width)] flex lg:justify-center md:justify-end font-serif">
-          {children}
+          <div className="flex relative mt-28 w-full lg:w-[var(--block-width)] md:w-[75%] flex-col md:max-w-[var(--max-block-width)] md:mt-4">
+            {children}
+          </div>
         </div>
       </body>
     </html>

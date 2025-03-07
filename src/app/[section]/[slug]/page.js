@@ -20,7 +20,6 @@ export async function generateStaticParams() {
   });
 
   return pageParams;
-  // return [{ slug: "the-framework", id: "1985ae7e-a4ba-8033-9126-c847c294a062" }];
 }
 
 export default async function Page({ params }) {
