@@ -1,15 +1,27 @@
-import { getPageContent } from "@/notion/notion";
+import { getPageContent, getToc } from "@/notion/notion";
 
 import PageLayout from "@/app/layout/PageLayout";
 
-// not sure what to do about this?
-export function generateStaticParams() {
-  return [{ slug: "the-framework", id: "1985ae7e-a4ba-8033-9126-c847c294a062" }]; // Pre-generates these pages at build time
+// Pre-generates these pages at build time
+// not sure if this is the best way to do this?
+export async function generateStaticParams() {
+  const toc = await getToc();
+  const pageParams = [];
+  toc.map((block) => {
+    if (block.type === "toggle" && block.has_children) {
+      block.children.map((child) => {
+        if (child.type === "link_to_page") {
+          pageParams.push({ slug: child.slug, id: child.page_id });
+        }
+      });
+    }
+  });
+  return pageParams;
+  // return [{ slug: "the-framework", id: "1985ae7e-a4ba-8033-9126-c847c294a062" }];
 }
 
 export default async function Page({ params }) {
   const pageParams = await params;
-  // console.log("JB Page", pageParams);
   const pageContent = await getPageContent(pageParams.id);
   return <PageLayout pageContent={pageContent} />;
 }
