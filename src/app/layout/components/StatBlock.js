@@ -2,7 +2,7 @@ import RichText from "@/app/layout/components/RichText";
 
 export default function StatBlock({ blockChildren }) {
   return (
-    <div className="flex my-4 font-sans flex-row justify-between border-y-2 border-gray py-4">
+    <div className="flex my-4 font-sans md:flex-row gap-4 md:gap-0 flex-col md:justify-between border-y-2 border-gray py-4">
       {blockChildren.map((block, index) => {
         return <StatBlockCol key={index} text={block[block.type].rich_text} />;
       })}

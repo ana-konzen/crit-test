@@ -20,7 +20,7 @@ const componentDict = {
 
 export default async function PageLayout({ pageContent }) {
   return (
-    <div className="flex relative lg:w-[var(--block-width)] w-[75%] flex-col max-w-[var(--max-block-width)] mt-4">
+    <div className="flex relative mt-28 w-full lg:w-[var(--block-width)] md:w-[75%] flex-col md:max-w-[var(--max-block-width)] md:mt-4">
       {pageContent.map((block) => {
         if (block.type === "callout" && block.callout.rich_text[0].plain_text === "Crit Info") {
           return <CritInfo key={block.id} blockChildren={block.children} />;

@@ -1,6 +1,6 @@
 export default function Header({ text }) {
   return (
-    <div className="font-serif text-xl text-right relative w-28 -left-32 translate-y-[100%] mt-4 italic">
+    <div className="font-serif text-xl md:text-right mb-4 md:mb-0 relative w-28 md:-left-32 md:translate-y-[100%] mt-4 italic">
       {text.map((item) => {
         if (item.annotations.color === "gray") {
           return null;

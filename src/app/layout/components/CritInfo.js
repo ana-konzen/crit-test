@@ -16,7 +16,6 @@ function InfoLine({ text }) {
       <RichText
         richText={text}
         modifyStyles={(item) => ({
-          "mx-0 ml-0 mr-0": true,
           "mx-0": item.annotations.code,
         })}
       />

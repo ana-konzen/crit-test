@@ -1,5 +1,7 @@
 import { Libre_Baskerville, Nunito } from "next/font/google";
 import NavBar from "@/app/layout/nav/NavBar";
+import BurgerMenu from "@/app/layout/nav/BurgerMenu";
+
 import "./globals.css";
 
 const baskerville = Libre_Baskerville({
@@ -26,7 +28,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${baskerville.variable} ${nunito.variable} antialiased`}>
         <NavBar />
-        <div className="p-4 absolute xl:right-[50px] right-0 w-[var(--content-width)] flex lg:justify-center justify-end font-serif">
+        <BurgerMenu />
+        <div className="p-4 absolute xl:right-[50px] w-screen right-0 md:w-[var(--content-width)] flex lg:justify-center md:justify-end font-serif">
           {children}
         </div>
       </body>
