@@ -26,12 +26,12 @@ export default function ToggleBlock({ title, slug, blockChildren }) {
         {title}
         {visible ? <ChevronUpIcon className={arrowClass} /> : <ChevronDownIcon className={arrowClass} />}
       </div>
-      <div className={`${itemClass}`}>
+      <div className={`${itemClass} flex flex-col`}>
         {blockChildren.map((child) => {
           if (child.type === "link_to_page") {
             return (
               <Link
-                href={`/${slug}/${child.page_id}`}
+                href={`/${slug}/${child.slug}`}
                 // as={`/${slug}/${child.slug}`}
                 className="text-sm font-sans mb-2"
                 key={child.id}
