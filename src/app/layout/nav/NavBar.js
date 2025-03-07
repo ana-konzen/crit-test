@@ -1,5 +1,6 @@
 import { getToc } from "@/notion/notion";
 import ToggleBlock from "@/app/layout/nav/ToggleBlock";
+import { createSlug } from "@/util";
 import Link from "next/link";
 
 const romanNumbers = ["I", "II", "III", "IV", "V"];
@@ -41,8 +42,4 @@ function Toc({ content }) {
       })}
     </>
   );
-}
-
-function createSlug(title) {
-  return title.toLowerCase().replaceAll(" ", "-");
 }
