@@ -30,12 +30,7 @@ export default function ToggleBlock({ title, slug, blockChildren }) {
         {blockChildren.map((child) => {
           if (child.type === "link_to_page") {
             return (
-              <Link
-                href={`/${slug}/${child.slug}`}
-                // as={`/${slug}/${child.slug}`}
-                className="text-sm font-sans mb-2"
-                key={child.id}
-              >
+              <Link href={`/${slug}/${child.slug}`} className="text-sm font-sans mb-2" key={child.id}>
                 {child.title}
               </Link>
             );
