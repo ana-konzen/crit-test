@@ -1,6 +1,7 @@
 import classNames from "classnames";
+import { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
 
-export default function RichText({ richText }) {
+export default function RichText({ richText }: { richText: RichTextItemResponse[] }) {
   return (
     <>
       {richText

@@ -16,7 +16,7 @@ import { createSlug } from "@/util";
 
 type Id = string;
 
-type CustomBlock = BlockObjectResponse & { children?: BlockObjectResponse[] };
+export type CustomBlock = BlockObjectResponse & { children?: BlockObjectResponse[] };
 
 function isFullPage(
   response: PageObjectResponse | PartialPageObjectResponse
