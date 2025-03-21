@@ -23,7 +23,7 @@ export const metadata = {
 
 export const revalidate = 60;
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${baskerville.variable} ${nunito.variable} antialiased`}>
