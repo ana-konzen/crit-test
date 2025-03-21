@@ -80,10 +80,14 @@ interface TocChild {
 export async function getToc(): Promise<TocItem[]> {
   const blocks = await fetchBlockChildren("1a75ae7ea4ba8030a2dcc88dafa1b27a");
   const toc = [];
+
   for await (const block of blocks) {
-    if (!block.has_children) continue;
+    if (!block.has_children || block.type !== "toggle") continue;
+
     const blockChildren = await fetchBlockChildren(block.id);
+
     const extendedChildren = [];
+
     for await (const child of blockChildren) {
       if (child.type !== "link_to_page" || child.link_to_page.type !== "page_id") continue;
       const childTitle = await fetchPageTitle({ page_id: child.link_to_page.page_id });
@@ -94,14 +98,13 @@ export async function getToc(): Promise<TocItem[]> {
         slug: createSlug(childTitle),
       });
     }
-    if (block.type === "toggle") {
-      toc.push({
-        title: block.toggle.rich_text[0].plain_text,
-        slug: createSlug(block.toggle.rich_text[0].plain_text),
-        id: block.id,
-        children: extendedChildren,
-      });
-    }
+
+    toc.push({
+      title: block.toggle.rich_text[0].plain_text,
+      slug: createSlug(block.toggle.rich_text[0].plain_text),
+      id: block.id,
+      children: extendedChildren,
+    });
   }
 
   return toc;
