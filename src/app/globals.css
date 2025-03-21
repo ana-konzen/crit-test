@@ -21,7 +21,5 @@
 }
 
 @theme inline {
-  --color-background: var(--color-cream);
-  --color-foreground: var(--color-black);
   --spacing-content-md: calc(100vw - var(--spacing-menu-max-w));
 }
