@@ -1,11 +1,18 @@
 "use client";
 import classNames from "classnames";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { TocChild } from "@/notion/notion";
 import Link from "next/link";
 
 import { useState } from "react";
 
-export default function ToggleBlock({ title, slug, blockChildren }) {
+interface ToggleBlockProps {
+  title: string;
+  slug: string;
+  blockChildren: TocChild[];
+}
+
+export default function ToggleBlock({ title, slug, blockChildren }: ToggleBlockProps) {
   const [visible, setVisible] = useState(false);
 
   const itemClass = classNames({

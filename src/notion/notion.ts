@@ -64,14 +64,14 @@ async function fetchPageTitle({ page_id }: GetPageParameters) {
   return response.properties.title.title[0].plain_text.trim();
 }
 
-interface TocItem {
+export interface TocItem {
   title: string;
   slug: string;
   id: string;
   children: TocChild[];
 }
 
-interface TocChild {
+export interface TocChild {
   page_id: string;
   title: string;
   slug: string;

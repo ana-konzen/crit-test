@@ -1,4 +1,4 @@
-import { getToc } from "@/notion/notion";
+import { getToc, TocItem } from "@/notion/notion";
 import ToggleBlock from "@/app/layout/nav/ToggleBlock";
 import Link from "next/link";
 
@@ -24,7 +24,7 @@ export default async function NavBar() {
   );
 }
 
-function Toc({ content }) {
+function Toc({ content }: { content: TocItem[] }) {
   return (
     <>
       {content.map((block, index) => {
