@@ -28,14 +28,11 @@ export default function ToggleBlock({ title, slug, blockChildren }) {
       </div>
       <div className={`${itemClass} flex flex-col`}>
         {blockChildren.map((child) => {
-          if (child.type === "link_to_page") {
-            return (
-              <Link href={`/${slug}/${child.slug}`} className="text-sm font-sans mb-2" key={child.id}>
-                {child.title}
-              </Link>
-            );
-          }
-          return null;
+          return (
+            <Link href={`/${slug}/${child.slug}`} className="text-sm font-sans mb-2" key={child.id}>
+              {child.title}
+            </Link>
+          );
         })}
       </div>
     </div>

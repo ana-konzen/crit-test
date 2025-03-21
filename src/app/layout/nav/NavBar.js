@@ -28,16 +28,14 @@ function Toc({ content }) {
   return (
     <>
       {content.map((block, index) => {
-        if (block.type === "toggle" && block.has_children) {
-          return (
-            <ToggleBlock
-              key={block.id}
-              title={`${romanNumbers[index]}. ${block.toggle.rich_text[0].plain_text}`}
-              slug={block.slug}
-              blockChildren={block.children}
-            />
-          );
-        }
+        return (
+          <ToggleBlock
+            key={block.id}
+            title={`${romanNumbers[index]}. ${block.title}`}
+            slug={block.slug}
+            blockChildren={block.children}
+          />
+        );
       })}
     </>
   );
