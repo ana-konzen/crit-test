@@ -11,9 +11,7 @@ export async function generateStaticParams() {
 
   toc.forEach((block) => {
     block.children.map((child) => {
-      if (child.type === "link_to_page") {
-        pageParams.push({ section: block.slug, slug: child.slug });
-      }
+      pageParams.push({ section: block.slug, slug: child.slug });
     });
   });
 
