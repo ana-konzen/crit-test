@@ -12,7 +12,6 @@ import { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
 
 const componentDict = {
   paragraph: Paragraph,
-  heading_1: PageTitle,
   heading_2: Header,
   heading_3: SubHeader,
   table: Table,
@@ -20,7 +19,13 @@ const componentDict = {
   quote: Quote,
 };
 
-export default async function PageLayout({ pageContent }: { pageContent: CustomBlock[] }) {
+export default async function PageLayout({
+  pageContent,
+  pageTitle,
+}: {
+  pageContent: CustomBlock[];
+  pageTitle: string;
+}) {
   // Function to render each block based on its type.
   const renderBlock = (block: CustomBlock) => {
     // Handle special "callout" blocks based on their first rich text content.
@@ -58,5 +63,10 @@ export default async function PageLayout({ pageContent }: { pageContent: CustomB
     return null;
   };
 
-  return <>{pageContent.map(renderBlock)}</>;
+  return (
+    <>
+      <PageTitle title={pageTitle} />
+      {pageContent.map(renderBlock)}
+    </>
+  );
 }

@@ -53,8 +53,9 @@ export async function getPageContent(block_id: Id): Promise<CustomBlock[]> {
   return blocksWithChildren;
 }
 
-async function fetchPageTitle({ page_id }: GetPageParameters) {
-  const response = await notion.pages.retrieve({ page_id });
+export async function fetchPageTitle(page_id: GetPageParameters | Id): Promise<string> {
+  const params = typeof page_id === "string" ? { page_id } : page_id;
+  const response = await notion.pages.retrieve(params);
   if (!isFullPage(response)) {
     throw new Error("Expected full page");
   }
@@ -91,7 +92,7 @@ export async function getToc(): Promise<TocItem[]> {
 
     for await (const child of blockChildren) {
       if (child.type !== "link_to_page" || child.link_to_page.type !== "page_id") continue;
-      const childTitle = await fetchPageTitle({ page_id: child.link_to_page.page_id });
+      const childTitle = await fetchPageTitle(child.link_to_page.page_id);
 
       extendedChildren.push({
         page_id: child.link_to_page.page_id,
