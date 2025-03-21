@@ -24,6 +24,7 @@ export default async function PageLayout({ pageContent }: { pageContent: CustomB
   // Function to render each block based on its type.
   const renderBlock = (block: CustomBlock) => {
     // Handle special "callout" blocks based on their first rich text content.
+
     if (block.type === "callout") {
       const calloutText = block.callout.rich_text[0]?.plain_text;
       if (calloutText === "Crit Info") {
