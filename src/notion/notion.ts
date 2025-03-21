@@ -75,6 +75,7 @@ interface TocChild {
   page_id: string;
   title: string;
   slug: string;
+  id: string;
 }
 
 export async function getToc(): Promise<TocItem[]> {
@@ -96,6 +97,7 @@ export async function getToc(): Promise<TocItem[]> {
         page_id: child.link_to_page.page_id,
         title: childTitle,
         slug: createSlug(childTitle),
+        id: child.id,
       });
     }
 
