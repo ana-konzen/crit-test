@@ -11,10 +11,10 @@
   --spacing-menu-max-w: 250px;
   --spacing-menu-min-w: 220px;
   --spacing-menu-h: 90vh;
+  --spacing-menu-margin: 20px;
   --radius-menu-r: 25px;
   --spacing-block-w-md: 600px;
   --spacing-block-w: 60%;
-  --spacing-menu-margin: 20px;
 }
 
 @theme inline {
