@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* colors */
   --color-red: #c14444;
   --color-white: #ffffff;
   --color-cream: #fdfaf8;
@@ -8,11 +9,13 @@
   --color-black: #403f3f;
   --color-gray: #928e8e;
   --color-light-gray: #cecbcb;
+  /* menu styles */
   --spacing-menu-max-w: 250px;
   --spacing-menu-min-w: 220px;
   --spacing-menu-h: 90vh;
   --spacing-menu-margin: 20px;
   --radius-menu-r: 25px;
+  /* block styles */
   --spacing-block-w-md: 600px;
   --spacing-block-w: 60%;
 }
