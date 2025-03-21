@@ -103,7 +103,6 @@ export async function getToc(): Promise<TocItem[]> {
       });
     }
   }
-  console.log(toc);
 
   return toc;
 }
