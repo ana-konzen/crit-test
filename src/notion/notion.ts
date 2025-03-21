@@ -31,7 +31,7 @@ const notion = new Client({
   auth: process.env.NOTION_KEY,
 });
 
-export async function fetchBlockChildren(block_id: Id): Promise<BlockObjectResponse[]> {
+export async function getBlockChildren(block_id: Id): Promise<BlockObjectResponse[]> {
   const response = await notion.blocks.children.list({
     block_id,
     page_size: 100,
@@ -41,11 +41,11 @@ export async function fetchBlockChildren(block_id: Id): Promise<BlockObjectRespo
 }
 
 export async function getPageContent(block_id: Id): Promise<CustomBlock[]> {
-  const blocks = await fetchBlockChildren(block_id);
+  const blocks = await getBlockChildren(block_id);
   const blocksWithChildren = await Promise.all(
     blocks.map(async (block: CustomBlock) => {
       if (block.has_children) {
-        block.children = await fetchBlockChildren(block.id);
+        block.children = await getBlockChildren(block.id);
       }
       return block;
     })
@@ -53,7 +53,7 @@ export async function getPageContent(block_id: Id): Promise<CustomBlock[]> {
   return blocksWithChildren;
 }
 
-export async function fetchPageTitle(page_id: GetPageParameters | Id): Promise<string> {
+export async function getPageTitle(page_id: GetPageParameters | Id): Promise<string> {
   const params = typeof page_id === "string" ? { page_id } : page_id;
   const response = await notion.pages.retrieve(params);
   if (!isFullPage(response)) {
@@ -80,19 +80,19 @@ export interface TocChild {
 }
 
 export async function getToc(): Promise<TocItem[]> {
-  const blocks = await fetchBlockChildren("1a75ae7ea4ba8030a2dcc88dafa1b27a");
+  const blocks = await getBlockChildren("1a75ae7ea4ba8030a2dcc88dafa1b27a");
   const toc = [];
 
   for await (const block of blocks) {
     if (!block.has_children || block.type !== "toggle") continue;
 
-    const blockChildren = await fetchBlockChildren(block.id);
+    const blockChildren = await getBlockChildren(block.id);
 
     const extendedChildren = [];
 
     for await (const child of blockChildren) {
       if (child.type !== "link_to_page" || child.link_to_page.type !== "page_id") continue;
-      const childTitle = await fetchPageTitle(child.link_to_page.page_id);
+      const childTitle = await getPageTitle(child.link_to_page.page_id);
 
       extendedChildren.push({
         page_id: child.link_to_page.page_id,

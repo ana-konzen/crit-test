@@ -1,4 +1,4 @@
-import { getPageContent, getToc, getContentParams, fetchPageTitle } from "@/notion/notion";
+import { getPageContent, getToc, getContentParams, getPageTitle } from "@/notion/notion";
 import { notFound } from "next/navigation";
 
 import PageLayout from "@/app/layout/PageLayout";
@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ section: stri
   const pageId = foundParam.page_id;
 
   const pageContent = await getPageContent(pageId);
-  const pageTitle = await fetchPageTitle(pageId);
+  const pageTitle = await getPageTitle(pageId);
 
   return <PageLayout pageContent={pageContent} pageTitle={pageTitle} />;
 }
