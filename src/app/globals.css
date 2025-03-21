@@ -22,10 +22,3 @@
   --color-foreground: var(--color-black);
   --spacing-content-md: calc(100vw - var(--spacing-menu-max-w));
 }
-
-:root {
-  --max-block-width: 600px;
-  --block-width: 60%;
-  --menu-margin: 20px;
-  --content-width-md: calc(100vw - var(--menu-max-width));
-}
