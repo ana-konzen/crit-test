@@ -1,6 +1,19 @@
 import RichText from "@/app/layout/components/RichText";
+import {
+  RichTextItemResponse,
+  BlockObjectResponse,
+  TableRowBlockObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 
-export default function Table({ content: table, blockChildren }) {
+export default function Table({
+  block,
+  blockChildren,
+}: {
+  block: BlockObjectResponse;
+  blockChildren: BlockObjectResponse[] | undefined;
+}) {
+  if (!blockChildren || block.type !== "table") return null;
+  const table = block.table;
   const rows = blockChildren;
 
   let headerRow;
@@ -15,12 +28,12 @@ export default function Table({ content: table, blockChildren }) {
       <table className="table-auto w-full">
         {headerRow && (
           <thead className="border-b font-bold border-gray">
-            <Row row={headerRow} />
+            <Row row={headerRow as TableRowBlockObjectResponse} />
           </thead>
         )}
         <tbody>
           {bodyRows.map((row, index) => (
-            <Row key={index} row={row} />
+            <Row key={index} row={row as TableRowBlockObjectResponse} />
           ))}
         </tbody>
       </table>
@@ -28,7 +41,7 @@ export default function Table({ content: table, blockChildren }) {
   );
 }
 
-function Row({ row }) {
+function Row({ row }: { row: TableRowBlockObjectResponse }) {
   return (
     <tr className="border-x-2 border-background">
       {row.table_row.cells.map((cell, index) => (
@@ -38,7 +51,7 @@ function Row({ row }) {
   );
 }
 
-function Cell({ cell }) {
+function Cell({ cell }: { cell: RichTextItemResponse[] }) {
   return (
     <td className="border-x align-top border-gray py-2 px-4">
       <RichText richText={cell} />

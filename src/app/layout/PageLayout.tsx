@@ -48,7 +48,7 @@ export default async function PageLayout({ pageContent }: { pageContent: CustomB
               ? (blockContent.rich_text as RichTextItemResponse[])
               : []
           }
-          content={blockContent}
+          block={block}
           blockChildren={block.children}
         />
       );
