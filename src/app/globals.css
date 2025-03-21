@@ -1,40 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-red: #c14444;
+  --color-white: #ffffff;
+  --color-cream: #fdfaf8;
+  --color-light-red: #f6d9d9;
+  --color-black: #403f3f;
+  --color-gray: #928e8e;
+  --color-light-gray: #cecbcb;
+  --spacing-menu-max-w: 250px;
+  --spacing-menu-min-w: 220px;
+  --spacing-menu-h: 90vh;
+  --radius-menu-r: 25px;
+  --spacing-block-w-md: 600px;
+  --spacing-block-w: 60%;
+  --spacing-menu-margin: 20px;
+}
+
+@theme inline {
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-black);
+  --spacing-content-md: calc(100vw - var(--spacing-menu-max-w));
+}
 
 :root {
-  --white: #ffffff;
-  --cream: #fdfaf8;
-  --red: #c14444;
-  --light-red: #f6d9d9;
-  --black: #403f3f;
-  --gray: #928e8e;
-  --light-gray: #cecbcb;
-  --background: var(--cream);
-  --foreground: var(--black);
-  --menu-width: 20vw;
-  --menu-max-width: 250px;
-  --menu-min-width: 180px;
   --max-block-width: 600px;
   --block-width: 60%;
   --menu-margin: 20px;
-  --content-width: calc(100vw - var(--menu-width) - var(--menu-margin));
-}
-
-/* @media (max-width: 1024px) {
-  :root {
-    --menu-width: 200px;
-  }
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--black);
-    --foreground: var(--cream);
-  }
-} */
-
-body {
-  color: var(--foreground);
-  background: var(--background);
+  --content-width-md: calc(100vw - var(--menu-max-width));
 }

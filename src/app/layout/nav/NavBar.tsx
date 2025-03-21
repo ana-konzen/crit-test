@@ -7,7 +7,7 @@ const romanNumbers = ["I", "II", "III", "IV", "V"];
 export default async function NavBar() {
   const toc = await getToc();
   return (
-    <div className="bg-red z-10 font-serif hidden md:block left-[var(--menu-margin)] top-[var(--menu-margin)] max-w-[var(--menu-max-width)]  min-w-[var(--menu-min-width)] text-cream h-[90vh] fixed p-8 w-menu rounded-[25px]">
+    <div className="bg-red z-10 font-serif hidden md:block left-menu-margin top-menu-margin w-menu-min-w text-cream h-menu-h fixed p-8 xl:w-menu-max-w rounded-menu-r">
       <Link href="/">
         <h1 className="text-xl mb-10">
           Designing
