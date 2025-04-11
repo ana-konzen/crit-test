@@ -9,11 +9,10 @@ export default function Callout({
   block: BlockObjectResponse;
 }) {
   if (block.type !== "callout") return null;
-  console.log(block);
   const emoji = block.callout.icon?.type === "emoji" ? block.callout.icon.emoji : null;
   return (
     <div className="font-serif flex bg-light-red text-sm m-8 p-4">
-      <div className="mr-4 text-2xl">{emoji}</div>
+      <div className="mr-4 text-xl">{emoji}</div>
       <div>
         <RichText richText={text} />
       </div>
