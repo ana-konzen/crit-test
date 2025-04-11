@@ -1,17 +1,32 @@
-import { Libre_Baskerville, Nunito } from "next/font/google";
+import {
+  Nunito,
+  Spectral,
+  Cormorant,
+  Playfair_Display,
+  Libre_Baskerville,
+  Gelasio,
+  EB_Garamond,
+} from "next/font/google";
 import NavBar from "@/app/layout/nav/NavBar";
 import BurgerMenu from "@/app/layout/nav/BurgerMenu";
 
 import "./globals.css";
 
-const baskerville = Libre_Baskerville({
+const display = Gelasio({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
+
+const serif = Spectral({
   variable: "--font-serif",
   subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal", "italic"],
 });
 
-const nunito = Nunito({
+const sans = Nunito({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -26,7 +41,7 @@ export const revalidate = 60;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${baskerville.variable} ${nunito.variable} antialiased`}>
+      <body className={`${display.variable} ${serif.variable} ${sans.variable} bg-background antialiased`}>
         <NavBar />
         <BurgerMenu />
         <div className="p-4 lg:pl-16 absolute w-screen right-0 md:w-content-md flex md:justify-center font-serif">

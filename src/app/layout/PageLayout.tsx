@@ -1,6 +1,7 @@
 import Paragraph from "@/app/layout/components/Paragraph";
-import Header from "@/app/layout/components/Header";
-import SubHeader from "@/app/layout/components/SubHeader";
+import Header1 from "@/app/layout/components/Header1";
+import Header2 from "@/app/layout/components/Header2";
+import Header3 from "@/app/layout/components/Header3";
 import PageTitle from "@/app/layout/components/PageTitle";
 import Callout from "@/app/layout/components/Callout";
 import Quote from "@/app/layout/components/Quote";
@@ -12,8 +13,9 @@ import { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
 
 const componentDict = {
   paragraph: Paragraph,
-  heading_2: Header,
-  heading_3: SubHeader,
+  heading_1: Header1,
+  heading_2: Header2,
+  heading_3: Header3,
   table: Table,
   callout: Callout,
   quote: Quote,

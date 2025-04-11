@@ -27,7 +27,7 @@ export default function ToggleBlock({ title, slug, blockChildren }: ToggleBlockP
   return (
     <div>
       <div
-        className={`text-sm mb-2 mt-4 border-b select-none cursor-pointer flex pb-1 justify-between`}
+        className={`mb-2 mt-4 border-b select-none cursor-pointer flex pb-1 justify-between`}
         onClick={() => setVisible(!visible)}
       >
         {title}

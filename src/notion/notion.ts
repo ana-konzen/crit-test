@@ -65,6 +65,11 @@ export async function getPageTitle(page_id: GetPageParameters | Id): Promise<str
   return response.properties.title.title[0].plain_text.trim();
 }
 
+// TocSection
+
+/**
+ *
+ */
 export interface TocItem {
   title: string;
   slug: string;
@@ -72,8 +77,9 @@ export interface TocItem {
   children: TocChild[];
 }
 
+//TocLink
 export interface TocChild {
-  page_id: string;
+  page_id: string; // the id of the page the block links to
   title: string;
   slug: string;
   id: string;

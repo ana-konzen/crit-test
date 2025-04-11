@@ -9,7 +9,7 @@ export default async function NavBar() {
   return (
     <div className="bg-red z-10 font-serif hidden md:block left-menu-margin top-menu-margin w-menu-min-w text-cream h-menu-h fixed p-8 xl:w-menu-max-w rounded-menu-r">
       <Link href="/">
-        <h1 className="text-xl mb-10">
+        <h1 className="text-xl font-display mb-10">
           Designing
           <br />
           Design

@@ -9,6 +9,7 @@
   --color-black: #403f3f;
   --color-gray: #928e8e;
   --color-light-gray: #cecbcb;
+  --color-highlight: yellow;
   /* menu styles */
   --spacing-menu-max-w: 250px;
   --spacing-menu-min-w: 220px;
@@ -18,8 +19,11 @@
   /* block styles */
   --spacing-block-w-md: 600px;
   --spacing-block-w: 60%;
+
+  --font-display: "Cormorant", serif;
 }
 
 @theme inline {
+  --color-background: var(--color-cream);
   --spacing-content-md: calc(100vw - var(--spacing-menu-max-w));
 }

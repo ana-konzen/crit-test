@@ -1,10 +1,22 @@
 import RichText from "@/app/layout/components/RichText";
-import { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
+import { RichTextItemResponse, BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
-export default function Callout({ text }: { text: RichTextItemResponse[] }) {
+export default function Callout({
+  text,
+  block,
+}: {
+  text: RichTextItemResponse[];
+  block: BlockObjectResponse;
+}) {
+  if (block.type !== "callout") return null;
+  console.log(block);
+  const emoji = block.callout.icon?.type === "emoji" ? block.callout.icon.emoji : null;
   return (
-    <div className="font-serif bg-lightRed text-sm m-8 p-4">
-      <RichText richText={text} />
+    <div className="font-serif flex bg-light-red text-sm m-8 p-4">
+      <div className="mr-4 text-2xl">{emoji}</div>
+      <div>
+        <RichText richText={text} />
+      </div>
     </div>
   );
 }

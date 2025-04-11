@@ -24,10 +24,10 @@ export default function Table({
   }
 
   return (
-    <div className="font-sans">
+    <div className="font-sans text-sm">
       <table className="table-auto w-full">
         {headerRow && (
-          <thead className="border-b font-bold border-gray">
+          <thead className="border-b  font-bold border-gray">
             <Row row={headerRow as TableRowBlockObjectResponse} />
           </thead>
         )}

@@ -16,7 +16,7 @@ export default function CritInfo({ blockChildren }: { blockChildren: BlockObject
 
 function InfoLine({ text }: { text: RichTextItemResponse[] }) {
   return (
-    <div className="font-sans flex mb-1">
+    <div className="font-sans text-sm flex mb-1">
       <RichText
         richText={text}
         modifyStyles={(item) => ({

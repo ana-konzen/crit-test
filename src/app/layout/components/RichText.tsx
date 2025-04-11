@@ -19,6 +19,8 @@ export default function RichText({
             "font-semibold text-red mx-1": item.annotations.code,
             "italic": item.annotations.italic,
             "underline": item.annotations.underline || item.href,
+            "bg-highlight": item.annotations.color === "yellow_background",
+            "strike-through": item.annotations.strikethrough,
             ...styleModifications,
           });
           if (item.href) {

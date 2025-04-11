@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: ["var(--font-serif)"],
+        display: ["var(--font-display)"],
         sans: ["var(--font-sans)"],
       },
     },
